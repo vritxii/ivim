@@ -1,6 +1,8 @@
 ### An awesome Vim config file.
-    > File Name: README.md
-    > File Name: README.md
+## master:
+    Release:0.100
+## dev:
+    Release:0.101
 #### For golang, python, cpp, lua, bash and so on.
 
 Install Script:
@@ -23,6 +25,9 @@ References:
 Here are some screenshots~
 - Welcome Page
 ![Alt text](./screenshots/welcome.png "welcom page")
+
+- Minimap
+![Alt text](./screenshots/minimap.png "minimap")
 
 - golang
 ![Alt text](./screenshots/golang.png "golang")
