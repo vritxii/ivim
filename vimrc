@@ -21,9 +21,9 @@ set novisualbell    " 不要闪烁(不明白)
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 set laststatus=1    " 启动显示状态行(1),总是显示状态行(2)  
 "设置折叠
-set foldenable      " 允许折叠  
+"set foldenable      " 允许折叠  
 "set foldmethod=manual   " 手动折叠  
-set foldmethod=indent
+"set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
@@ -198,7 +198,7 @@ set guioptions+=m           " 隐藏菜单栏
 "set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 " 设置在状态行显示的信息
 set foldcolumn=0
-set foldmethod=indent 
+set foldmethod=manual
 set foldlevel=3 
 set foldenable              " 开始折叠
 " 不要使用vi的键盘模式，而是vim自己的
