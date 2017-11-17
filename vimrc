@@ -20,12 +20,9 @@ set showcmd         " 输入的命令显示出来，看的清楚些
 set novisualbell    " 不要闪烁(不明白)  
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 set laststatus=1    " 启动显示状态行(1),总是显示状态行(2)  
-<<<<<<< HEAD
 "设置折叠
 "set foldenable      " 允许折叠  
 "set foldmethod=manual   " 手动折叠  
-=======
->>>>>>> f650e7e438737afd522cdf18ed4ad8c1a2e181d9
 "set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
