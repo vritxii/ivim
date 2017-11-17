@@ -1,4 +1,6 @@
 ### An awesome Vim config file.
+    > File Name: README.md
+    > File Name: README.md
 #### For golang, python, cpp, lua, bash and so on.
 
 Install Script:
@@ -19,6 +21,8 @@ References:
 - bundle/Vundle.vim: https://github.com/VundleVim/Vundle.vim
 
 Here are some screenshots~
+- Welcome Page
+![Alt text](./screenshots/welcome.png "welcom page")
 
 - golang
 ![Alt text](./screenshots/golang.png "golang")
