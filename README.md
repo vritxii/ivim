@@ -1,5 +1,8 @@
 ## 一份相对简单但是还能凑合用的VIM配置。
-## Release: 0.100
+## master:
+    Release: 0.100
+## dev:
+    Release 0.101 (add minimap)
 #### 支持golang, python, c, c++, bash等,其中对golang,python支持最好，毕竟我还用着2333,后期想配成模块，能够用一个简单的匹配文件来打开/关闭某一语言的相关设置。欢迎star, 提issue, 一起改进ivim。
 
 安装脚本:
