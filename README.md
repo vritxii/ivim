@@ -21,7 +21,7 @@ References:
 Here are some screenshots~
 
 - golang
-![Alt text](./screenshots/goland.png "goland")
+![Alt text](./screenshots/golang.png "golang")
 
 - python
 ![Alt text](./screenshots/python.png "python")
