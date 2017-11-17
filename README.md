@@ -15,7 +15,7 @@ Enjoy it!
 The font I used is monaco.
 
 References:
-- colors: https://github.com/rafi/awesome-vim-colorschemes
+- colors,docs,Colors.md: https://github.com/rafi/awesome-vim-colorschemes
 - bundle/Vundle.vim: https://github.com/VundleVim/Vundle.vim
 
 Here are some screenshots~
