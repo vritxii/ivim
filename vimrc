@@ -405,6 +405,10 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jnurmine/Zenburn'
+"minimap
+Plugin 'severin-lemaignan/vim-minimap'
+"startify
+Plugin 'mhinz/vim-startify'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
