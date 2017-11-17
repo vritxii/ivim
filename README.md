@@ -24,7 +24,7 @@ vim -c PluginInstall
   - python-mode
   - vim-ruby
   - html5
-  - vim-flavored-markdown
+  - vim-flavored-markdown
 
 比较有用的功能:
 - 自动补全(没了自动补全感觉不会写代码了...)
