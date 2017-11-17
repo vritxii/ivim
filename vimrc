@@ -20,10 +20,7 @@ set showcmd         " 输入的命令显示出来，看的清楚些
 set novisualbell    " 不要闪烁(不明白)  
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 set laststatus=1    " 启动显示状态行(1),总是显示状态行(2)  
-"设置折叠
-set foldenable      " 允许折叠  
-"set foldmethod=manual   " 手动折叠  
-set foldmethod=indent
+"set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
@@ -184,21 +181,14 @@ set nobackup
 :set makeprg=g++\ -Wall\ \ %
 "自动保存
 set autowrite
-"设置十字标
-set ruler                   " 打开状态栏标尺
-set cursorcolumn
-set cursorline
-highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
-highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
-
-set cursorline              " 突出显示当前行
+"设置十字标H
 set magic                   " 设置魔术
 set guioptions+=T           " 隐藏工具栏
 set guioptions+=m           " 隐藏菜单栏
 "set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 " 设置在状态行显示的信息
 set foldcolumn=0
-set foldmethod=indent 
+set foldmethod=manual 
 set foldlevel=3 
 set foldenable              " 开始折叠
 " 不要使用vi的键盘模式，而是vim自己的
@@ -405,6 +395,10 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jnurmine/Zenburn'
+"minimap
+Plugin 'severin-lemaignan/vim-minimap'
+"startify
+Plugin 'mhinz/vim-startify'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -415,6 +409,17 @@ filetype plugin indent on    " required
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" minimap
+nnoremap <F7> :Minimap<CR>
+nnoremap <C-M> :MinimapClose<CR>
+let g:minimap_show='<leader>ms'
+let g:minimap_update='<leader>mu'
+let g:minimap_close='<leader>gc'
+let g:minimap_toggle='<leader>gt'
+let g:minimap_highlight='Visual'
+
+"历史记录
+
 " vim-go settings
 let g:go_fmt_command = "goimports"
 

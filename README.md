@@ -19,6 +19,8 @@ References:
 - bundle/Vundle.vim: https://github.com/VundleVim/Vundle.vim
 
 Here are some screenshots~
+- Welcome Page
+![Alt text](./screenshots/welcome.png "welcom page")
 
 - golang
 ![Alt text](./screenshots/golang.png "golang")
