@@ -147,7 +147,7 @@ func! CompileRunGcc()
         exec "!javac %" 
         exec "!java %<"
     elseif &filetype == 'sh'
-        :!./%
+        exec "!bash %"
     endif
 endfunc
 "C,C++的调试
@@ -318,26 +318,24 @@ autocmd FileType java set tags+=D:\tools\java\tags
 "let Tlist_Show_One_File=1            "不同时显示多个文件的tag，只显示当前文件的
 "设置tags  
 set tags=tags  
-"set autochdir 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"其他东东
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set autochdir 
+"使用tagbar替代taglist
 "默认打开Taglist 
-let Tlist_Auto_Open=1 
+"let Tlist_Auto_Open=1 
 """""""""""""""""""""""""""""" 
 " Tag list (ctags) 
 """""""""""""""""""""""""""""""" 
-let Tlist_Ctags_Cmd = '/usr/bin/ctags' 
-let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的 
-let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim 
-let Tlist_Use_Right_Window = 1 "在右侧窗口中显示taglist窗口
+"let Tlist_Ctags_Cmd = '/usr/bin/ctags' 
+"let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的 
+"let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim 
+"let Tlist_Use_Right_Window = 1 "在右侧窗口中显示taglist窗口
 " minibufexpl插件的一般设置
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
-set nocompatible              " be iMproved, required
-" set the runtime path to include Vundle and initialize
+set nocompatible
+"初始化Vundele
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
 " alternatively, pass a path where Vundle should install plugins
@@ -395,25 +393,17 @@ Bundle "klen/python-mode"
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'vim-scripts/TaskList.vim'
-"filesystem
 Plugin 'jistr/vim-nerdtree-tabs'
-"html
-"  isnowfy only compatible with python not python3
 Plugin 'isnowfy/python-vim-instant-markdown'
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'nelstrom/vim-markdown-preview'
-"python sytax checker
 Plugin 'nvie/vim-flake8'
-"Plugin 'vim-scripts/Pydiction'
 Plugin 'vim-scripts/indentpython.vim'
-"auto-completion stuff
 Plugin 'klen/rope-vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
-""code folding
 Plugin 'tmhedberg/SimpylFold'
-"Colors!!!
 Plugin 'jnurmine/Zenburn'
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -427,6 +417,7 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 " vim-go settings
 let g:go_fmt_command = "goimports"
+
 " YCM settings
 let g:ycm_key_list_select_completion = ['', '']
 let g:ycm_key_list_previous_completion = ['', '']
@@ -447,9 +438,6 @@ let g:ycm_min_num_of_chars_for_completion=2	" 从第2个键入字符就开始罗
 let g:ycm_server_python_interpreter='/usr/bin/python2'
 let g:ycm_cache_omnifunc=0	" 禁止缓存匹配项,每次都重新生成匹配项
 let g:ycm_seed_identifiers_with_syntax=1	" 语法关键字补全
-"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-"nnoremap <leader>lo :lopen<CR>	"open locationlist
-"nnoremap <leader>lc :lclose<CR>	"close locationlist
 
 "系统配置
 set noswapfile
@@ -468,11 +456,6 @@ nnoremap <C-H> <C-W><C-H>
 if has('mouse')
 	set mouse=a
 endif
-
-"nmap w=  :resize +3<CR>
-"nmap w-  :resize -3<CR>
-"nmap w,  :vertical resize -3<CR>
-"nmap w.  :vertical resize +3<CR>
 
 let g:SimpylFold_docstring_preview=1
 set splitbelow
@@ -514,5 +497,4 @@ au BufRead,BufNewFile *.py,*.pyw set textwidth=100
 
 " Use UNIX (\n) line endings.
 au BufNewFile *.py,*.pyw,*.c,*.h,*go,*hpp,*cpp set fileformat=unix
-
 let python_highlight_all=1
