@@ -9,10 +9,11 @@ mv ~/.vim* ~/vim.bak
 git clone http://github.com/vritxii/ivim.git ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
 vim -c PluginInstall
+#waiting...
 ```
 Enjoy it!
 The font I used is monaco.
-Here is a simple screenshot~
+Here is a simple screenshots~
 
 - golang
 ![Alt text](./screenshots/goland.png "goland")
