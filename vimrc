@@ -340,7 +340,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
 " alternatively, pass a path where Vundle should install plugins
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -358,38 +358,38 @@ Plugin 'sonph/onehalf'
 Plugin 'ascenator/L9'
 " All of your Plugins must be added before the following line
 " Define bundles via Github repos
-Bundle 'christoomey/vim-run-interactive'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'croaky/vim-colors-github'
-Bundle 'danro/rename.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'pbrisbin/vim-mkdir'
-Bundle 'scrooloose/syntastic'
-Bundle 'slim-template/vim-slim'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/ctags.vim'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/tComment'
-Bundle "mattn/emmet-vim"
-Bundle "scrooloose/nerdtree"
-Bundle "Lokaltog/vim-powerline"
-Bundle "godlygeek/tabular"
-Bundle "msanders/snipmate.vim"
-Bundle "jelera/vim-javascript-syntax"
-Bundle "altercation/vim-colors-solarized"
-Bundle "othree/html5.vim"
-Bundle "xsbeats/vim-blade"
-Bundle "Raimondi/delimitMate"
-Bundle "groenewege/vim-less"
-Bundle "Lokaltog/vim-easymotion"
-Bundle "tomasr/molokai"
-Bundle "klen/python-mode"
+Plugin 'christoomey/vim-run-interactive'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'croaky/vim-colors-github'
+Plugin 'danro/rename.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kien/ctrlp.vim'
+Plugin 'pbrisbin/vim-mkdir'
+Plugin 'scrooloose/syntastic'
+Plugin 'slim-template/vim-slim'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-scripts/ctags.vim'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/tComment'
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'godlygeek/tabular'
+Plugin 'msanders/snipmate.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'othree/html5.vim'
+Plugin 'xsbeats/vim-blade'
+Plugin 'Raimondi/delimitMate'
+Plugin 'groenewege/vim-less'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tomasr/molokai'
+Plugin 'klen/python-mode'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'vim-scripts/TaskList.vim'
