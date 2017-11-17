@@ -1,7 +1,6 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 显示相关  
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 "winpos 5 5          " 设定窗口位置  
 "set lines=40 columns=155    " 设定窗口大小  
@@ -21,12 +20,15 @@ set showcmd         " 输入的命令显示出来，看的清楚些
 set novisualbell    " 不要闪烁(不明白)  
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 set laststatus=1    " 启动显示状态行(1),总是显示状态行(2)  
+"设置折叠
+"set foldenable      " 允许折叠  
+"set foldmethod=manual   " 手动折叠  
 "set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
 set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
-" 显示中文帮助H
+" 显示中文帮助
 if version >= 603
     set helplang=cn
     set encoding=utf-8
@@ -42,64 +44,55 @@ if has('gui_running')
 else
   "colorscheme zenburn
   set background=dark
-  colorscheme onehalfdark
+  colorscheme onehalfdark 
 endif
 "colorscheme desert
 "set background=dark
 "colorscheme solarized
-nnoremap <F6> :TagbarToggle<CR>
-"字体
-if (has("gui_running"))
-   set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
-endif
+nnoremap <F6> :TagbarToggle<CR> 
+"字体 
+if (has("gui_running")) 
+   set guifont=Bitstream\ Vera\ Sans\ Mono\ 10 
+endif 
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb2312
 set fileencoding=utf-8
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""
-"""""新文件标题""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""
-"新建.c,.h,.sh,.java,go,py文件，自动插入文件头
-autocmd BufNewFile *.cpp,*.go,*.py,*.[ch],*.sh,*.java exec ":call SetTitle()"
-""定义函数SetTitle，自动插入文件头
-func SetTitle()
-    "如果文件类型为.sh文件
-    call
-setline(1,"\
-#########################################################################")
-        call append(line("."), "\# File Name: ".expand("%"))
-        call append(line(".")+1, "\# Author: vritxii")
-        call append(line(".")+2, "\# mail: nkdzt@foxmail.com")
-        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-        call append(line(".")+4,
-"\#########################################################################")
-        call append(line(".")+5, "\#!/bin/bash")
-        call append(line(".")+6, "")
-	elseif &filetype == 'go'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""新文件标题""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"新建.c,.h,.sh,.java,go,py文件，自动插入文件头 
+autocmd BufNewFile *.cpp,*.go,*.py,*.[ch],*.sh,*.java exec ":call SetTitle()" 
+""定义函数SetTitle，自动插入文件头 
+func SetTitle() 
+    "如果文件类型为.sh文件 
+    if &filetype == 'sh' 
+        call setline(1,"\#########################################################################") 
+        call append(line("."), "\# File Name: ".expand("%")) 
+        call append(line(".")+1, "\# Author: vritxii") 
+        call append(line(".")+2, "\# mail: nkdzt@foxmail.com") 
+        call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
+        call append(line(".")+4, "\#########################################################################") 
+        call append(line(".")+5, "\#!/bin/bash") 
+        call append(line(".")+6, "") 
+	elseif &filetype == 'go' 
 		call setline(1, "\package main")
 		call append(line("."), "\/**")
-        call
-append(line(".")+1,"\
-#########################################################################")
-        call append(line(".")+2, "\# File Name: ".expand("%"))
-        call append(line(".")+3, "\# Author: vritxii")
-        call append(line(".")+4, "\# mail: nkdzt@foxmail.com")
-        call append(line(".")+5, "\# Created Time: ".strftime("%c"))
-        call append(line(".")+6,
-"\#########################################################################")
-        call append(line(".")+7, "\**/")
+        call append(line(".")+1,"\#########################################################################") 
+        call append(line(".")+2, "\# File Name: ".expand("%")) 
+        call append(line(".")+3, "\# Author: vritxii") 
+        call append(line(".")+4, "\# mail: nkdzt@foxmail.com") 
+        call append(line(".")+5, "\# Created Time: ".strftime("%c")) 
+        call append(line(".")+6, "\#########################################################################") 
+        call append(line(".")+7, "\**/") 
 		call append(line(".")+8, "")
-    else
-        call setline(1,
-"/*************************************************************************")
-        call append(line("."), "    > File Name: ".expand("%"))
-        call append(line(".")+1, "    > Author: vritxii")
-        call append(line(".")+2, "    > Mail: nkdzt@foxmail.com ")
-        call append(line(".")+3, "    > Created Time: ".strftime("%c"))
-        call append(line(".")+4, "
-************************************************************************/")
+    else 
+        call setline(1, "/*************************************************************************") 
+        call append(line("."), "    > File Name: ".expand("%")) 
+        call append(line(".")+1, "    > Author: vritxii") 
+        call append(line(".")+2, "    > Mail: nkdzt@foxmail.com ") 
+        call append(line(".")+3, "    > Created Time: ".strftime("%c")) 
+        call append(line(".")+4, " ************************************************************************/") 
         call append(line(".")+5, "")
     endif
 
@@ -114,26 +107,45 @@ append(line(".")+1,"\
     endif
     "新建文件后，自动定位到文件末尾
     autocmd BufNewFile * normal G
-endfunc
+endfunc 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "键盘命令
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""H
-nmap <leader>f :find<cH
-map <C-A> ggVGH
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>w :w!<cr>
+nmap <leader>f :find<cr>
+" 映射全选+复制 ctrl+a
+map <C-A> ggVGY
+map! <C-A> <Esc>ggVGY
+map <F12> gg=G
 " 选中状态下 Ctrl+c 复制
-vmap <C-c> "+H
-nnoremap <F2H
-nnoremap <C-F2>H
-map <M-F2> :tabH
-map <F3> :tabnew .<CR> H
-map <C-F3> \be H
-map <F5> :call CompileRunGH
-    exec "wH
-        exec "!g++ % -oH
-	elseif &filetype == H
-	elseif &filetype H
-    elseif &filetypH
-        exec "! ./%<H
-        exec "!javac %"H
+vmap <C-c> "+y
+"去空行  
+nnoremap <F2> :g/^\s*$/d<CR> 
+"比较文件  
+nnoremap <C-F2> :vert diffsplit 
+"新建标签  
+map <M-F2> :tabnew<CR>  
+"列出当前目录文件  
+map <F3> :tabnew .<CR>  
+"打开树状文件目录  
+map <C-F3> \be  
+"C，C++ 按F5编译运行
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+	elseif &filetype == 'go'
+		exec "!go run %"
+	elseif &filetype == 'py'
+		exec "!intelpy %"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java' 
+        exec "!javac %" 
+        exec "!java %<"
     elseif &filetype == 'sh'
         exec "!bash %"
     endif
@@ -172,7 +184,14 @@ set nobackup
 :set makeprg=g++\ -Wall\ \ %
 "自动保存
 set autowrite
-"设置十字标H
+"设置十字标
+set ruler                   " 打开状态栏标尺
+set cursorcolumn
+set cursorline
+highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+
+set cursorline              " 突出显示当前行
 set magic                   " 设置魔术
 set guioptions+=T           " 隐藏工具栏
 set guioptions+=m           " 隐藏菜单栏
@@ -400,17 +419,6 @@ filetype plugin indent on    " required
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-" minimap
-nnoremap <F7> :Minimap<CR>
-nnoremap <C-M> :MinimapClose<CR>
-let g:minimap_show='<leader>ms'
-let g:minimap_update='<leader>mu'
-let g:minimap_close='<leader>gc'
-let g:minimap_toggle='<leader>gt'
-let g:minimap_highlight='Visual'
-
-"历史记录
-
 " vim-go settings
 let g:go_fmt_command = "goimports"
 
