@@ -1,3 +1,6 @@
+<div style="text-align:center" markdown="1">
+![Alt Text](./screenshots/ivim.png "IVIM")
+</div>
 ## 一份相对简单但是还能凑合用的VIM配置。
 ## master:
     Release: 0.100
