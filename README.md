@@ -1,6 +1,4 @@
-<div align=center>
 ![Alt Text](./screenshots/ivim.png "IVIM")
-</div>
 ### An awesome Vim config file.
 ## master:
     Release:0.100
