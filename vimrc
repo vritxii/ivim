@@ -50,13 +50,13 @@ set guifont=Courier_New:h10:cANSI   " 设置字体
 syntax on           " 语法高亮
 "设置十字标H
 set ruler
-set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+"set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set showcmd         " 输入的命令显示出来，看的清楚些  
 set showmode
 set cursorcolumn
 set cursorline
-highlight CursorLine   cterm=underline ctermbg=black ctermfg=green guibg=black guifg=green
-highlight CursorColumn cterm=underline ctermbg=black ctermfg=green guibg=black guifg=green
+highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=green
+highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=green
 
 set magic                   " 设置魔术
 set guioptions+=T           " 隐藏工具栏
@@ -110,6 +110,7 @@ if has('gui_running')
 else
 	"colorscheme zenburn
 	set background=dark
+	let g:onehalfdark_termcolors=256
 	colorscheme onehalfdark 
 	"let g:solarized_termcolors=256
 	"let g:solarized_termtrans=1
@@ -132,7 +133,8 @@ set fileencoding=utf-8
 autocmd BufNewFile *.cpp,*.go,*.py,*.[ch],*.sh,*.java exec ":call SetTitle()" 
 ""定义函数SetTitle，自动插入文件头 
 func SetTitle() 
-    "如果文件类型为.sh文件 
+    "如果文件类型为.sh文件
+	exec "w"
     if &filetype == 'sh' 
         call setline(1,"\#########################################################################") 
         call append(line("."), "\# File Name: ".expand("%")) 
@@ -153,6 +155,16 @@ func SetTitle()
         call append(line(".")+6, "\#########################################################################") 
         call append(line(".")+7, "\**/") 
 		call append(line(".")+8, "")
+		
+	elseif &filetype == "python"
+        call setline(1,"\#########################################################################") 
+        call append(line("."), "\# File Name: ".expand("%")) 
+        call append(line(".")+1, "\# Author: vritxii") 
+        call append(line(".")+2, "\# mail: nkdzt@foxmail.com") 
+        call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
+        call append(line(".")+4, "\#########################################################################") 
+        call append(line(".")+5, "\#!/bin/env python3") 
+		call append(line(".")+6, "")
     else 
         call setline(1, "/*************************************************************************") 
         call append(line("."), "    > File Name: ".expand("%")) 
@@ -168,6 +180,7 @@ func SetTitle()
         call append(line(".")+7, "using namespace std;")
         call append(line(".")+8, "")
     endif
+
     if &filetype == 'c'
         call append(line(".")+6, "#include<stdio.h>")
         call append(line(".")+7, "")
@@ -219,7 +232,7 @@ func! CompileRunGcc()
         exec "! ./%<"
 	elseif &filetype == 'go'
 		exec "!go run %"
-	elseif &filetype == 'py'
+	elseif &filetype == 'python'
 		exec "!intelpy %"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
@@ -227,15 +240,15 @@ func! CompileRunGcc()
     elseif &filetype == 'java' 
         exec "!javac %" 
         exec "!java %<"
-    elseif &filetype == 'sh'
+    elseif &filetype == 'bash'
         exec "!bash %"
-    elseif &filetype == 'pl'
+    elseif &filetype == 'perl'
         exec "!perl %"
     elseif &filetype == 'lua'
         exec "!lua %"
 	elseif &filetype == "r"
 		exec "!Rscript %"
-	elseif &filetype == "rb"
+	elseif &filetype == "ruby"
 		exec "!ruby %"
     endif
 endfunc
@@ -244,8 +257,13 @@ endfunc
 map <F8> :call Rungdb()<CR>
 func! Rungdb()
     exec "w"
-    exec "!g++ % -g -o %<"
-    exec "!gdb ./%<"
+	if &filetype == "cpp"
+		exec "!g++ % -g -o %<"
+		exec "!gdb ./%<"
+	elseif &filetype == "c"
+		exec "!gcc % -g -o %<"
+		exec "!gdb ./%<"
+	endif
 endfunc
 
 function! CleverTab()
@@ -255,8 +273,9 @@ function! CleverTab()
         return "\<C-N>"
     endif
 endfunc
-inoremap <Tab> <C-R>=CleverTab()<CR>
+
 ""实用设置
+inoremap <Tab> <C-R>=CleverTab()<CR>
 " 设置当文件被改动时自动载入
 set autoread
 " quickfix模式
@@ -379,16 +398,6 @@ endfunction
 filetype plugin indent on 
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
-" CTags的设定  
-"let Tlist_Sort_Type = "name"    " 按照名称排序  
-"let Tlist_Use_Right_Window = 1  " 在右侧显示窗口  
-"let Tlist_Compart_Format = 1    " 压缩方式  
-"let Tlist_Exist_OnlyWindow = 1  " 如果只有一个buffer，kill窗口也kill掉buffer  
-"let Tlist_File_Fold_Auto_Close = 0  " 不要关闭其他文件的tags  
-"let Tlist_Enable_Fold_Column = 0    " 不要显示折叠树  
-"autocmd FileType h,cpp,cc,c set tags+=D:\tools\cpp\tags  
-"let Tlist_Show_One_File=1            "不同时显示多个文件的tag，只显示当前文件的
-"设置tags  
 set tags=tags  
 set autochdir 
 " minibufexpl插件的一般设置
@@ -397,6 +406,7 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 set nocompatible
+
 "初始化Vundele
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
@@ -407,19 +417,11 @@ call vundle#begin('~/.vim/bundle')
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" "Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
+"本地插件仓库 
+"Plugin 'file:///home/gmarik/path/to/plugin'
 Plugin 'rstacruz/sparkup'
 Plugin 'sonph/onehalf'
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
 Plugin 'ascenator/L9'
-" All of your Plugins must be added before the following line
-" Define bundles via Github repos
 Plugin 'christoomey/vim-run-interactive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'croaky/vim-colors-github'
@@ -475,20 +477,17 @@ Plugin 'mhinz/vim-startify'
 Plugin 'tpope/vim-commentary'
 "高亮括号插件
 Plugin 'kien/rainbow_parentheses.vim'
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
+call vundle#end()
+filetype plugin indent on
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
+"<leader>: \
 "插件配置
 "************************************************************
-"<leader>: \
 " minimap{
 	if isdirectory(expand("~/.vim/bundle/vim-minimap/"))
 		nnoremap <F7> :Minimap<CR>
