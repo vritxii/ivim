@@ -402,6 +402,8 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'severin-lemaignan/vim-minimap'
 "startify
 Plugin 'mhinz/vim-startify'
+"高亮括号插件
+Plugin 'kien/rainbow_parentheses.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -412,6 +414,9 @@ filetype plugin indent on    " required
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+"插件配置
+"************************************************************
 " minimap
 nnoremap <F7> :Minimap<CR>
 nnoremap <C-M> :MinimapClose<CR>
@@ -421,10 +426,51 @@ let g:minimap_close='<leader>gc'
 let g:minimap_toggle='<leader>gt'
 let g:minimap_highlight='Visual'
 
-"历史记录
+"高亮括号-rainbow_parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+" 不加入这行, 防止黑色括号出现, 很难识别
+" \ ['black',       'SeaGreen3'],
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " vim-go settings
 let g:go_fmt_command = "goimports"
+" set mapleader
+let mapleader = ','
+
+" vim-go custom mappings
+au FileType go nmap s (go-implements)
+au FileType go nmap i (go-info)
+au FileType go nmap gd (go-doc)
+au FileType go nmap gv (go-doc-vertical)
+au FileType go nmap r (go-run)
+au FileType go nmap b (go-build)
+au FileType go nmap t (go-test)
+au FileType go nmap c (go-coverage)
+au FileType go nmap ds (go-def-split)
+au FileType go nmap dv (go-def-vertical)
+au FileType go nmap dt (go-def-tab)
+au FileType go nmap e (go-rename)
 
 " YCM settings
 let g:ycm_key_list_select_completion = ['', '']
