@@ -4,7 +4,7 @@
     An awesome Vim config file.
 </p>
 
-##Release Notes
+## Release Notes
 - master:
   - 0.100
   
