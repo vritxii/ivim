@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://vritxii.com"><img src="./screenshots/ivim.png" /></a>
+    <a href="https://vritxii.com"><img src="./screenshots/ivim.jpg" /></a>
     <br/>
     <h1 style="color:blue" align="center">An awesome Vim config file.</h1>
 </p>
