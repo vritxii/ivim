@@ -1,5 +1,6 @@
-![Alt Text](./screenshots/ivim.png "IVIM")
-
+<p align="center">
+<a href="https://vritxii.com"><img src="./screenshots/ivim.png" /></a>
+</p>
 ## 一份相对简单但是还能凑合用的VIM配置。
 ## master:
     Release: 0.100
