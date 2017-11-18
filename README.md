@@ -1,7 +1,7 @@
 <p align="center">
     <a href="https://vritxii.com"><img src="./screenshots/ivim.png" /></a>
     <br/>
-    An awesome Vim config file.
+    <h1 style="color:blue" align="center">An awesome Vim config file.</h1>
 </p>
 
 ## Release Notes
