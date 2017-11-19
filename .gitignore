@@ -1,8 +1,4 @@
 bundle/*
-<<<<<<< HEAD
-!/bundle/Vundle.vim/
-=======
 backup/*
 /spf13-vim/
 !/bundle/IVundle.vim/
->>>>>>> dev
