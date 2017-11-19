@@ -40,7 +40,7 @@
 "插件无关配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 显示相关  
-winpos 300 250
+winpos 250 250
 set lines=40 columns=120
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 set nu              " 显示行号  
@@ -958,7 +958,7 @@ au BufRead,BufNewFile *.py,*.pyw set textwidth=100
 au BufNewFile *.py,*.pyw,*.c,*.h,*go,*hpp,*cpp set fileformat=unix
 let python_highlight_all=1
 
-"设置十字标H
+"设置十字标
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set showcmd         " 输入的命令显示出来，看的清楚些  
