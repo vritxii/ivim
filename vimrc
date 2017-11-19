@@ -601,6 +601,7 @@ filetype plugin indent on
 
 	endif
 "}
+
 "airline {
 	if isdirectory(expand("~/.vim/bundle/vim-airline/"))
 		" airline
