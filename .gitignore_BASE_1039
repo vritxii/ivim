@@ -1,0 +1,3 @@
+bundle/*
+bundle.bak/*
+!/bundle/Vundle.vim/
