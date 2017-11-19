@@ -410,6 +410,7 @@ Plugin 'chxuan/change-colorscheme'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ihacklog/HiCursorWords'
 "本地插件仓库 
 Plugin 'file:///home/nihility/.vim/bundle/IVundle.vim'
 "Plugin 'file:///home/gmarik/path/to/plugin'
@@ -474,6 +475,8 @@ Plugin 'mhinz/vim-startify'
 "巨漂亮的NerdTree文件名高亮及图标插件
 if has('gui_running')
 	Plugin 'ryanoasis/vim-devicons'
+else
+	Plugin 'ryanoasis/vim-devicons'
 endif
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 "代码注释
@@ -522,6 +525,14 @@ filetype plugin indent on
 "<leader>: \
 "插件配置
 "************************************************************
+"HiCursorWords {
+	if isdirectory(expand("~/.vim/bundle/HiCursorWords/"))
+		let g:HiCursorWords_delay = 200
+		let g:HiCursorWords_hiGroupRegexp = ''
+		let g:HiCursorWords_debugEchoHiName = 0
+	endif
+"}
+
 "easymotion {
 	if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
 		map s <Plug>(easymotion-s)
@@ -959,6 +970,10 @@ au BufNewFile *.py,*.pyw,*.c,*.h,*go,*hpp,*cpp set fileformat=unix
 let python_highlight_all=1
 
 "设置十字标
+":autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+let HlUnderCursor=0
+:autocmd CursorMoved * exe exists("HlUnderCursor")?HlUnderCursor?printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')):'match none':""
+:nnoremap <leader>h :exec "let HlUnderCursor=exists(\"HlUnderCursor\")?HlUnderCursor*-1+1:1"<CR>
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set showcmd         " 输入的命令显示出来，看的清楚些  
@@ -969,5 +984,23 @@ highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=
 highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=green
 
 if has('gui_running')
-	highlight Cursor cterm=NONE ctermbg=black ctermfg=red guibg=black guifg=red
+	"highlight Cursor cterm=NONE ctermbg=black ctermfg=red guibg=black guifg=red
+	highlight Cursor guibg=black guifg=red
+	highlight iCursor guifg=black guibg=red
+else
+	if &term =~ "xterm\\|rxvt"
+	" use an orange cursor in insert mode
+		let &t_SI = "\<Esc>]12;orange\x7"
+		" use a red cursor otherwise
+		let &t_EI = "\<Esc>]12;red\x7"
+		silent !echo -ne "\033]12;red\007"
+		" reset cursor when vim exits
+		autocmd VimLeave * silent !echo -ne "\033]112\007"
+		" use \003]12;gray\007 for gnome-terminal and rxvt up to version 9.21
+		" 以下仅针对gnome-terminal
+		au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"    
+		au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+		au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+		au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+	endif
 endif
