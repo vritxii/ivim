@@ -1,5 +1,5 @@
 bundle/*
 backup/*
 /spf13-vim/
-/config/patched-fons/
+/config/patched-fonts/
 !/bundle/IVundle.vim/
