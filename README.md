@@ -6,9 +6,23 @@
 
 ## Release Notes
 - master:
+  - 0.110
+	- 添加代码缩略图
+	- 添加多个快捷映射
+	- 增强C++支持
+	- 替换欢迎界面，显示最近打开文件等
+
   - 0.100
   
 - dev:
+  - 0.110
+	- 增强C++支持
+	- 替换欢迎界面，显示最近打开文件等
+
+  - 0.105
+	- 添加代码缩略图
+	- 添加多个快捷映射
+
   - 0.101
   
 
@@ -25,6 +39,7 @@ vim -c PluginInstall
 #waiting...
 ```
 尽情享受吧!
+#### 尽情享受吧!
 
 #### 配置简易说明:
 - 字体: monaco
@@ -50,10 +65,22 @@ vim -c PluginInstall
 - python pep8标准检查,虚拟环境，代码折叠，快速搜索和替换（可指定范围)，markdown实时预览
 - 简单的代码缩略图，更改vim欢迎界面，显示最近打开文件
 
-#### 内置库引用:
+
+#### 比较有用的功能:
+- 自动补全(没了自动补全感觉不会写代码了...)
+- 函数，变量列表，快速跳转
+- 文件目录窗口，便捷垂直，水平切分窗口，支持鼠标调整窗口大小,键绑定快速窗口跳转
+- 相对行数，能让你快速跳转到当前页面任意行，打开标尺，用十字定位当前光标，并将当前行和列高亮为原谅绿:)
+- 一键编译运行，仅支持单文件，目前支持,c,c++,java,bash,python,golang
+- 新建文件添加对应代码头(文件名，作者，邮箱，创建时间等)
+- python pep8标准检查,虚拟环境，代码折叠，快速搜索和替换（可指定范围)，markdown实时预览
+- 简单的代码缩略图，更改vim欢迎界面，显示最近打开文件
+- 一些快捷键设置
+
+##### 内置库引用:
 - colors,docs,Colors.md: https://github.com/rafi/awesome-vim-colorschemes
 - bundle/IVundle.vim: https://github.com/VundleVim/Vundle.vim
-#### 插件
+# 插件
 ```
 Plugin 'tpope/vim-fugitive'
 Plugin 'rstacruz/sparkup'
@@ -119,6 +146,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 ```
 
 下面随便截了几张图,不知道为什么总感觉这配色和字体搭配看着很舒服:)
+
 - Welcome Page
 ![Alt text](./screenshots/welcome.png "welcom page")
 

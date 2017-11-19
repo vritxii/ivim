@@ -1,2 +1,5 @@
 bundle/*
-!/bundle/Vundle.vim/
+backup/*
+/spf13-vim/
+/config/patched-fons/
+!/bundle/IVundle.vim/
