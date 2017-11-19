@@ -26,8 +26,7 @@
         if WINDOWS()
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
-    " }
-    
+		
     " Arrow Key Fix {
         " https://github.com/spf13/spf13-vim/issues/780
         if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
@@ -41,12 +40,10 @@
 "插件无关配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 显示相关  
-winpos 125 125
-set lines=40 columns=150
+winpos 300 250
+set lines=40 columns=120
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
-"winpos 5 5          " 设定窗口位置  
-"set lines=40 columns=155    " 设定窗口大小  
-"set nu              " 显示行号  
+set nu              " 显示行号  
 set go=             " 不要图形按钮  
 syntax on           " 语法高亮
 
@@ -949,8 +946,7 @@ au BufRead,BufNewFile *.py set softtabstop=4
 
 "原谅绿高亮多余空格 
 highlight BadWhitespace ctermbg=green guibg=green
-
-" Display tabs at the beginning of a line in Python mode as bad.
+"" Display tabs at the beginning of a line in Python mode as bad.
 "au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*go,*hpp,*cpp match BadWhitespace /\s\+$/
@@ -964,11 +960,14 @@ let python_highlight_all=1
 
 "设置十字标H
 set ruler
-"set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set showcmd         " 输入的命令显示出来，看的清楚些  
 set showmode
 set cursorcolumn
 set cursorline
-highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=red
-highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=red
+highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=green
+highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=green
 
+if has('gui_running')
+	highlight Cursor cterm=NONE ctermbg=black ctermfg=red guibg=black guifg=red
+endif
