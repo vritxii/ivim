@@ -41,6 +41,8 @@
 "插件无关配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 显示相关  
+winpos 125 125
+set lines=40 columns=150
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 "winpos 5 5          " 设定窗口位置  
 "set lines=40 columns=155    " 设定窗口大小  
@@ -61,7 +63,6 @@ if has('statusline')
 endif
 set laststatus=1    " 启动显示状态行(1),总是显示状态行(2)  
 "设置折叠
-"set foldenable      " 允许折叠  
 "set foldmethod=manual   " 手动折叠  
 "set foldmethod=indent
 set foldenable      " 允许折叠  
@@ -70,8 +71,6 @@ set foldmethod=manual   " 手动折叠
 set foldcolumn=0
 set foldlevel=99
 nnoremap <space> za
-
-set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
 " 显示中文帮助
 if version >= 603
     set helplang=cn
@@ -103,15 +102,9 @@ if has('gui_running')
     let g:solarized_visibility="normal"
 	color solarized             " Load a colorscheme
 else
-	"colorscheme zenburn
 	set background=dark
 	let g:onehalfdark_termcolors=256
 	colorscheme onehalfdark 
-	"let g:solarized_termcolors=256
-	"let g:solarized_termtrans=1
-	"let g:solarized_contrast="normal"
-    "let g:solarized_visibility="normal"
-	"color solarized             " Load a colorscheme
 endif
 
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
@@ -287,12 +280,6 @@ set nobackup
 :set makeprg=g++\ -Wall\ \ %
 "自动保存
 set autowrite
-"set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
-" 设置在状态行显示的信息
-set foldcolumn=0
-set foldmethod=manual
-set foldlevel=3 
-set foldenable              " 开始折叠
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 " 语法高亮
