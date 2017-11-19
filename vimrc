@@ -375,6 +375,14 @@ set scrolloff=3
 set smartindent
 " 高亮显示普通txt文件（需要txt.vim脚本）
 au BufRead,BufNewFile *  setfiletype txt
+"搜索相关
+nnoremap / /
+nnoremap ? /
+nnoremap <leader>vr :.,$s//gec<left><left><left><left>
+xnoremap <leader>vr "ty:.,$s/<c-r>t//gec<left><left><left><left>
+nnoremap <leader>zr :.,$s//gec<left><left><left><left>\<<c-r><c-w>\>/
+xnoremap <leader>zr "ty:.,$s/\<<c-r>t\>//gec<left><left><left><left>
+nnoremap <leader>v/ :%s///gn<left><left><left><left>
 "自动补全
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
@@ -974,11 +982,3 @@ set cursorline
 highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=red
 highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=red
 
-"搜索相关
-nnoremap / /
-nnoremap ? /
-nnoremap <leader>vr :.,$s//gec<left><left><left><left>
-xnoremap <leader>vr "ty:.,$s/<c-r>t//gec<left><left><left><left>
-nnoremap <leader>zr :.,$s//gec<left><left><left><left>\<<c-r><c-w>\>/
-xnoremap <leader>zr "ty:.,$s/\<<c-r>t\>//gec<left><left><left><left>
-nnoremap <leader>v/ :%s///gn<left><left><left><left>
