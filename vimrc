@@ -48,15 +48,6 @@ set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提�
 set go=             " 不要图形按钮  
 set guifont=Courier_New:h10:cANSI   " 设置字体  
 syntax on           " 语法高亮
-"设置十字标H
-set ruler
-"set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-set showcmd         " 输入的命令显示出来，看的清楚些  
-set showmode
-set cursorcolumn
-set cursorline
-highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=green
-highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=green
 
 set magic                   " 设置魔术
 set guioptions+=T           " 隐藏工具栏
@@ -144,6 +135,7 @@ func SetTitle()
         call append(line(".")+4, "\#########################################################################") 
         call append(line(".")+5, "\#!/bin/bash") 
         call append(line(".")+6, "") 
+
 	elseif &filetype == 'go' 
 		call setline(1, "\package main")
 		call append(line("."), "\/**")
@@ -321,8 +313,8 @@ set relativenumber
 " 历史记录数
 set history=1000
 "禁止生成临时文件
-set nobackup
-set noswapfile
+"set nobackup
+"set noswapfile
 "搜索忽略大小写
 set ignorecase
 "搜索逐字符高亮
@@ -408,16 +400,16 @@ let g:miniBufExplModSelTarget = 1
 set nocompatible
 
 "初始化Vundele
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/IVundle.vim
 call vundle#begin('~/.vim/bundle')
 " alternatively, pass a path where Vundle should install plugins
 " let Vundle manage Vundle, required
 "Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 "本地插件仓库 
+Plugin 'file:///home/nihility/.vim/bundle/IVundle.vim'
 "Plugin 'file:///home/gmarik/path/to/plugin'
 Plugin 'rstacruz/sparkup'
 Plugin 'sonph/onehalf'
@@ -469,6 +461,8 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jnurmine/Zenburn'
+"C++自动补全
+"Plugin 'Rip-Rip/clang_complete'
 "代码代码缩略图
 Plugin 'severin-lemaignan/vim-minimap'
 "欢迎界面
@@ -478,6 +472,7 @@ Plugin 'tpope/vim-commentary'
 "高亮括号插件
 Plugin 'kien/rainbow_parentheses.vim'
 call vundle#end()
+
 filetype plugin indent on
 " Brief help
 " :PluginList       - lists configured plugins
@@ -488,6 +483,21 @@ filetype plugin indent on
 "<leader>: \
 "插件配置
 "************************************************************
+"easymotion
+map s <Plug>(easymotion-s)
+map S <Plug>(easymotion-sol-bd-jk)
+
+"clang_complete {
+	if isdirectory(expand("~/.vim/bundle/clang_complete/"))
+		let g:clang_complete_copen=1
+		let g:clang_periodic_quickfix=1
+		let g:clang_snippets=1
+		let g:clang_close_preview=1
+		let g:clang_use_library=1
+		let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
+	endif
+"}
+
 " minimap{
 	if isdirectory(expand("~/.vim/bundle/vim-minimap/"))
 		nnoremap <F7> :Minimap<CR>
@@ -499,11 +509,6 @@ filetype plugin indent on
 		let g:minimap_highlight='Visual'
 	endif
 " }
-
-"rainbow{
-
-"}
-" "高亮括号-rainbow_parentheses
 
 " NerdTree {
     if isdirectory(expand("~/.vim/bundle/nerdtree"))
@@ -529,7 +534,7 @@ filetype plugin indent on
 "}
 
 " Rainbow {
-    if isdirectory(expand("~/.vim/bundle/rainbow/"))
+    if isdirectory(expand("~/.vim/bundle/rainbow_parentheses.vim/"))
         let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 		let g:rbpt_max = 16
 		let g:rbpt_loadcmd_toggle = 0
@@ -573,6 +578,7 @@ filetype plugin indent on
 		"gcgc    撤销注释当前行和邻近的上下两行
 	endif
 "}
+
 " Functions{
 	" Initialize NERDTree as needed {
     function! NERDTreeInitAsNeeded()
@@ -652,22 +658,29 @@ filetype plugin indent on
 	endif
 " }
 
-" YCM settings
-let g:ycm_key_list_select_completion = ['', '']
-let g:ycm_key_list_previous_completion = ['', '']
-let g:ycm_key_invoke_completion = ''
 
-"youcompleteme  默认tab  s-tab 和自动补全冲突
-let g:ycm_key_list_select_completion=['<c-n>']
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion=['<c-p>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
-let g:ycm_collect_identifiers_from_tags_files=1	" 开启 YCM 基于标签引擎
-let g:ycm_min_num_of_chars_for_completion=2	" 从第2个键入字符就开始罗列匹配项
-let g:ycm_server_python_interpreter='/usr/bin/python2'
-let g:ycm_cache_omnifunc=0	" 禁止缓存匹配项,每次都重新生成匹配项
-let g:ycm_seed_identifiers_with_syntax=1	" 语法关键字补全
+" YCM settings{
+"安装命令
+"./install.sh --clang-completer --go-completer --enable-coverage --js-completer --system-boost --system-libclang
+"cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~/.vim
+	if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
+		let g:ycm_key_list_select_completion = ['', '']
+		let g:ycm_key_list_previous_completion = ['', '']
+		let g:ycm_key_invoke_completion = ''
+
+		"youcompleteme  默认tab  s-tab 和自动补全冲突
+		let g:ycm_key_list_select_completion=['<c-n>']
+		let g:ycm_key_list_select_completion = ['<Down>']
+		let g:ycm_key_list_previous_completion=['<c-p>']
+		let g:ycm_key_list_previous_completion = ['<Up>']
+		let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
+		let g:ycm_collect_identifiers_from_tags_files=1	" 开启 YCM 基于标签引擎
+		let g:ycm_min_num_of_chars_for_completion=1	" 从第2个键入字符就开始罗列匹配项
+		let g:ycm_server_python_interpreter='/usr/bin/python2'
+		let g:ycm_global_ycm_extra_conf='~/.vim/config/ycm_extra_conf.py'
+		let g:ycm_cache_omnifunc=1	" 禁止缓存匹配项,每次都重新生成匹配项
+	endif
+" }
 
 "窗口跳转
 "Ctrl-h 切换到左侧的分割窗口
@@ -728,3 +741,23 @@ au BufRead,BufNewFile *.py,*.pyw set textwidth=100
 " 使用 UNIX (\n) 行结尾，dos会有^M.
 au BufNewFile *.py,*.pyw,*.c,*.h,*go,*hpp,*cpp set fileformat=unix
 let python_highlight_all=1
+
+"设置十字标H
+set ruler
+"set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+set showcmd         " 输入的命令显示出来，看的清楚些  
+set showmode
+set cursorcolumn
+set cursorline
+highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=green
+"highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=black guifg=green
+
+"搜索相关
+nnoremap / /
+nnoremap ? /
+nnoremap <leader>vr :.,$s//gec<left><left><left><left>
+xnoremap <leader>vr "ty:.,$s/<c-r>t//gec<left><left><left><left>
+nnoremap <leader>zr :.,$s//gec<left><left><left><left>\<<c-r><c-w>\>/
+xnoremap <leader>zr "ty:.,$s/\<<c-r>t\>//gec<left><left><left><left>
+nnoremap <leader>v/ :%s///gn<left><left><left><left>
+

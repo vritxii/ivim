@@ -1,4 +1,4 @@
 bundle/*
 backup/*
 /spf13-vim/
-!/bundle/Vundle.vim/
+!/bundle/IVundle.vim/

@@ -51,7 +51,7 @@ vim -c PluginInstall
 
 #### 内置库引用:
 - colors,docs,Colors.md: https://github.com/rafi/awesome-vim-colorschemes
-- bundle/Vundle.vim: https://github.com/VundleVim/Vundle.vim
+- bundle/IVundle.vim: https://github.com/VundleVim/Vundle.vim
 #### 插件
 ```
 Plugin 'tpope/vim-fugitive'
