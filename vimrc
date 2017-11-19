@@ -191,6 +191,8 @@ map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
+"快速切换缓缓存
+map <leader>bf :buffer 
 
 " Map <Leader>ff to display all lines with keyword under cursor
 " and ask which one to jump to
@@ -660,8 +662,8 @@ filetype plugin indent on
 " NerdTree {
     if isdirectory(expand("~/.vim/bundle/nerdtree"))
 		map <silent> <F3> :NERDTreeToggle<CR>
-        map <leader>e :NERDTreeFind<CR>
         nmap <leader>nt :NERDTreeFind<CR>
+        nmap <leader>sf :Startify<CR>
         let NERDTreeShowBookmarks=1
         let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
         let NERDTreeChDirMode=1
@@ -670,7 +672,7 @@ filetype plugin indent on
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
         let g:nerdtree_tabs_open_on_gui_startup=0
-		"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+		autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree.isTabTree()) | Startify | endif
 		autocmd BufRead,BufNewFile *.dot map <F5> :w<CR>:!dot -Tjpg -o %<.jpg % && eog %<.jpg <CR><CR> && exec "redr!"
 		"autocmd VimEnter * NERDTree
 		autocmd VimEnter * wincmd w
