@@ -628,7 +628,7 @@ filetype plugin indent on
 "vim-markdown {
 	if isdirectory(expand("~/.vim/bundle/vim-markdown/"))
 		let g:markdown_include_jekyll_support = 0
-		let g:markdown_enable_folding = 1
+		let g:markdown_enable_folding = 0
 		let g:markdown_enable_insert_mode_leader_mappings = 1
 		let g:markdown_enable_conceal = 0
 	endif
