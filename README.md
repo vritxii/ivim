@@ -38,6 +38,7 @@ vim -c PluginInstall
   - vim-ruby
   - html5
   - vim-flavored-markdown
+  - clang-complete
 
 #### 比较有用的功能:
 - 自动补全(没了自动补全感觉不会写代码了...)
@@ -51,7 +52,7 @@ vim -c PluginInstall
 
 #### 内置库引用:
 - colors,docs,Colors.md: https://github.com/rafi/awesome-vim-colorschemes
-- bundle/Vundle.vim: https://github.com/VundleVim/Vundle.vim
+- bundle/IVundle.vim: https://github.com/VundleVim/Vundle.vim
 #### 插件
 ```
 Plugin 'tpope/vim-fugitive'
@@ -105,10 +106,16 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jnurmine/Zenburn'
-"minimap
+"C++自动补全
+"Plugin 'Rip-Rip/clang_complete'
+"代码代码缩略图
 Plugin 'severin-lemaignan/vim-minimap'
-"startify
-Plugin 'mhinz/vim-startify
+"欢迎界面
+Plugin 'mhinz/vim-startify'
+"代码注释
+Plugin 'tpope/vim-commentary'
+"高亮括号插件
+Plugin 'kien/rainbow_parentheses.vim'
 ```
 
 下面随便截了几张图,不知道为什么总感觉这配色和字体搭配看着很舒服:)
