@@ -73,7 +73,46 @@ vim -c PluginInstall
 #### 内置库引用:
 - colors,docs,Colors.md: https://github.com/rafi/awesome-vim-colorschemes
 - bundle/IVundle.vim: https://github.com/VundleVim/Vundle.vim
-# 插件
+
+
+下面随便截了几张图,不知道为什么总感觉这配色和字体搭配看着很舒服:)
+</br>
+Default Terminal: gnome-terminal
+</br>
+
+- <font size=4>Welcome Page</font>
+![Alt text](./screenshots/welcome.png "welcom page")
+
+- <font size=4>Welcome Page of GVIM</font>
+![Alt text](./screenshots/gvim_welcome.png "welcom page")
+
+- <font size=4>Minimap</font>
+![Alt text](./screenshots/minimap.png "minimap")
+
+- <font size=4>Golang</font>
+![Alt text](./screenshots/golang.png "golang")
+
+- <font size=4>Python</font>
+![Alt text](./screenshots/python.png "python")
+
+- <font size=4>Python on gvim</font>
+![Alt text](./screenshots/gvim_py.png "python")
+
+- <font size=4>C++</font>
+![Alt text](./screenshots/cpp.png "cpp")
+
+- <font size=4>vimrc</font>
+![Alt text](./screenshots/vimrc.png "vimrc")
+
+- <font size=4>Bash</font></br>
+![Alt text](./screenshots/bash.png "bash")
+
+- <font size=4>Lua</font>
+![Alt text](./screenshots/lua.png "lua")
+
+</hr>
+
+## 安装插件
 ```
 Plugin 'tpope/vim-fugitive'
 Plugin 'rstacruz/sparkup'
@@ -136,34 +175,6 @@ Plugin 'mhinz/vim-startify'
 Plugin 'tpope/vim-commentary'
 "高亮括号插件
 Plugin 'kien/rainbow_parentheses.vim'
-if has('gui_running')
-    Plugin 'ryanoasis/vim-devicons'
-endif
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 ```
-
-下面随便截了几张图,不知道为什么总感觉这配色和字体搭配看着很舒服:)
-
-- Welcome Page
-![Alt text](./screenshots/welcome.png "welcom page")
-
-- Minimap
-![Alt text](./screenshots/minimap.png "minimap")
-
-- golang
-![Alt text](./screenshots/golang.png "golang")
-
-- python
-![Alt text](./screenshots/python.png "python")
-
-- cpp
-![Alt text](./screenshots/cpp.png "cpp")
-
-- vimrc
-![Alt text](./screenshots/vimrc.png "vimrc")
-
-- bash
-![Alt text](./screenshots/bash.png "bash")
-
-- lua
-![Alt text](./screenshots/lua.png "lua")
