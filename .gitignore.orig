@@ -1,8 +1,0 @@
-bundle/*
-backup/*
-/spf13-vim/
-<<<<<<< HEAD
-/config/patched-fons/
-=======
->>>>>>> 89baafec186f3a65a1a0b296e56948f1bf1f1760
-!/bundle/IVundle.vim/
