@@ -6,11 +6,6 @@
 
 ## Release Notes
 - master:
-<<<<<<< HEAD
-  - 0.100
-  
-- dev:
-=======
   - 0.110
 	- 添加代码缩略图
 	- 添加多个快捷映射
@@ -28,7 +23,6 @@
 	- 添加代码缩略图
 	- 添加多个快捷映射
 
->>>>>>> dev
   - 0.101
   
 
@@ -44,11 +38,8 @@ ln -s ~/.vim/vimrc ~/.vimrc
 vim -c PluginInstall
 #waiting...
 ```
-<<<<<<< HEAD
 尽情享受吧!
-=======
 #### 尽情享受吧!
->>>>>>> dev
 
 #### 配置简易说明:
 - 字体: monaco
@@ -63,7 +54,6 @@ vim -c PluginInstall
   - html5
   - vim-flavored-markdown
   - clang-complete
-<<<<<<< HEAD
 
 #### 比较有用的功能:
 - 自动补全(没了自动补全感觉不会写代码了...)
@@ -75,7 +65,6 @@ vim -c PluginInstall
 - python pep8标准检查,虚拟环境，代码折叠，快速搜索和替换（可指定范围)，markdown实时预览
 - 简单的代码缩略图，更改vim欢迎界面，显示最近打开文件
 
-=======
 
 #### 比较有用的功能:
 - 自动补全(没了自动补全感觉不会写代码了...)
@@ -88,7 +77,6 @@ vim -c PluginInstall
 - 简单的代码缩略图，更改vim欢迎界面，显示最近打开文件
 - 一些快捷键设置
 
->>>>>>> dev
 #### 内置库引用:
 - colors,docs,Colors.md: https://github.com/rafi/awesome-vim-colorschemes
 - bundle/IVundle.vim: https://github.com/VundleVim/Vundle.vim
@@ -158,10 +146,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 ```
 
 下面随便截了几张图,不知道为什么总感觉这配色和字体搭配看着很舒服:)
-<<<<<<< HEAD
-=======
 
->>>>>>> dev
 - Welcome Page
 ![Alt text](./screenshots/welcome.png "welcom page")
 

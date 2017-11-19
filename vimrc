@@ -64,16 +64,13 @@ if has('statusline')
 endif
 set laststatus=1    " 启动显示状态行(1),总是显示状态行(2)  
 "设置折叠
-<<<<<<< HEAD
 "set foldenable      " 允许折叠  
 "set foldmethod=manual   " 手动折叠  
 "set foldmethod=indent
-=======
 set foldenable      " 允许折叠  
 set foldmethod=manual   " 手动折叠  
 "set foldmethod=indent
 set foldcolumn=0
->>>>>>> dev
 set foldlevel=99
 nnoremap <space> za
 
@@ -293,13 +290,10 @@ set nobackup
 set autowrite
 "set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 " 设置在状态行显示的信息
-<<<<<<< HEAD
 set foldcolumn=0
 set foldmethod=manual
 set foldlevel=3 
 set foldenable              " 开始折叠
-=======
->>>>>>> dev
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 " 语法高亮
@@ -474,17 +468,6 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jnurmine/Zenburn'
-<<<<<<< HEAD
-"minimap
-Plugin 'severin-lemaignan/vim-minimap'
-"startify
-Plugin 'mhinz/vim-startify'
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-=======
 "C++自动补全
 "Plugin 'Rip-Rip/clang_complete'
 "代码代码缩略图
@@ -498,7 +481,6 @@ Plugin 'kien/rainbow_parentheses.vim'
 call vundle#end()
 
 filetype plugin indent on
->>>>>>> dev
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -508,9 +490,12 @@ filetype plugin indent on
 "<leader>: \
 "插件配置
 "************************************************************
-"easymotion
-map s <Plug>(easymotion-s)
-map S <Plug>(easymotion-sol-bd-jk)
+"easymotion {
+	if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
+		map s <Plug>(easymotion-s)
+		map S <Plug>(easymotion-sol-bd-jk)
+	endif
+"}
 
 "clang_complete {
 	if isdirectory(expand("~/.vim/bundle/clang_complete/"))
