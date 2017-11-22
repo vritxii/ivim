@@ -14,7 +14,7 @@
 
   - 0.100
   
-- dev:
+- dev(Powerful but also Stable):
   - 0.110
 	- 增强C++支持
 	- 替换欢迎界面，显示最近打开文件等
